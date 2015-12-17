@@ -15,7 +15,7 @@ type GogsHookRequest struct {
 type Sender struct {
 	Login     string `json:"login"`
 	Id        int64  `json:"id"`
-	AvatarUrl int64  `json:"avatar_url"`
+	AvatarUrl string `json:"avatar_url"`
 }
 
 type Repository struct {
