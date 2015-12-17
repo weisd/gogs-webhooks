@@ -93,7 +93,7 @@ func gitPullSrc(path string) (string, error) {
 }
 
 func Hello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "his")
+	fmt.Fprintf(w, "hi man")
 }
 
 var tomlPath string
