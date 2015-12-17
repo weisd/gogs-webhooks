@@ -11,12 +11,12 @@ import (
 func Webhook(w http.ResponseWriter, r *http.Request) {
 	ret := "ok"
 	var err error
-	defer func(w http.ResponseWriter, ret string, err error) {
+	defer func(w http.ResponseWriter, *ret string, err error) {
 		if err != nil {
 			fmt.Println(err)
 		}
 		fmt.Fprintf(w, ret)
-	}(w, ret, err)
+	}(w, &ret, err)
 
 	data, err := ioutil.ReadAll(r.Body)
 	if err != nil {
