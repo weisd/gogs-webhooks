@@ -80,6 +80,9 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println(result)
+	fmt.Println("pull ok")
+
 	fmt.Fprintf(w, result)
 }
 
