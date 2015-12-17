@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -9,7 +10,13 @@ import (
 
 func Webhook(w http.ResponseWriter, r *http.Request) {
 	ret := "ok"
-	defer fmt.Fprintf(w, ret)
+	var err error
+	defer func(w http.ResponseWriter, ret string, err error) {
+		if err != nil {
+			fmt.Println(err)
+		}
+		fmt.Fprintf(w, ret)
+	}(w, ret, err)
 
 	data, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -17,15 +24,15 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(string(data))
+	var v GogsHookRequest
 
-	err := r.ParseForm()
+	err = json.Unmarshal(data, v)
 	if err != nil {
 		ret = err.Error()
 		return
 	}
 
-	fmt.Println(r.Form)
+	fmt.Println(GogsHookRequest)
 
 	return
 }
