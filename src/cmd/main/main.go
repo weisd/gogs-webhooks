@@ -26,13 +26,13 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 
 	var v GogsHookRequest
 
-	err = json.Unmarshal(data, v)
+	err = json.Unmarshal(data, &v)
 	if err != nil {
 		ret = err.Error()
 		return
 	}
 
-	fmt.Println(GogsHookRequest)
+	fmt.Println(v)
 
 	return
 }
