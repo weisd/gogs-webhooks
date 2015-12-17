@@ -26,8 +26,6 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Println(string(data))
 
-	// r.Form.Get(key)
-
 	return
 }
 
