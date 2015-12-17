@@ -17,14 +17,6 @@ http://localhost:port/hooks?k=<名称>
 ## 配置
 使用 github.com/BurntSushi/toml
 
-[[Reps.<名称>]]
-name = "test"  
-ref="master"
-secret = "Secret"
-srcPath = "/data/test"
-allowUser = ["weisd"]
-
-
 ```
 listen = ":8081"
 [Reps.test]
