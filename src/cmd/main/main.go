@@ -109,5 +109,5 @@ func main() {
 	mux.HandleFunc("/hooks", Webhook)
 	mux.HandleFunc("/", Hello)
 
-	log.Fatal(http.ListenAndServe(":8080", mux))
+	log.Fatal(http.ListenAndServe(Setting.Listen, mux))
 }

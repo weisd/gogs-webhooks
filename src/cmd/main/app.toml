@@ -1,3 +1,4 @@
+listen = ":8081"
 [Reps.test]
 name = "test"
 ref="master"

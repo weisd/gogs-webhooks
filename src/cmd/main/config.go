@@ -5,7 +5,8 @@ import (
 )
 
 type Conf struct {
-	Reps map[string]DataSrc
+	Listen string
+	Reps   map[string]DataSrc
 }
 
 type DataSrc struct {
