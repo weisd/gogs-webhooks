@@ -1,0 +1,20 @@
+[Reps.test]
+name = "test"
+ref="master"
+secret = "Secret"
+srcPath = "SrcPath"
+allowUser = ["weisd"]
+
+[Reps.a]
+name = "a"
+ref="master"
+secret = "Secret"
+srcPath = "SrcPath"
+allowUser = ["weisd"]
+
+[Reps.b]
+name = "b"
+ref="master"
+secret = "Secret"
+srcPath = "SrcPath"
+allowUser = ["weisd"]
