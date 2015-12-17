@@ -10,13 +10,6 @@ import (
 func Webhook(w http.ResponseWriter, r *http.Request) {
 	ret := "ok"
 	defer fmt.Fprintf(w, ret)
-	err := r.ParseForm()
-	if err != nil {
-		ret = err.Error()
-		return
-	}
-
-	fmt.Println(r.Form)
 
 	data, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -25,6 +18,14 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(string(data))
+
+	err := r.ParseForm()
+	if err != nil {
+		ret = err.Error()
+		return
+	}
+
+	fmt.Println(r.Form)
 
 	return
 }
