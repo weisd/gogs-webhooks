@@ -26,7 +26,7 @@ type Repository struct {
 	CloneUrl    string `json:"clone_url"`
 	Description string `json:"description"`
 	Website     string `json:"website"`
-	Watchers    string `json:"watchers"`
+	Watchers    int64  `json:"watchers"`
 	Owner       Author `json:"owner"`
 	Private     string `json:"private"`
 }
