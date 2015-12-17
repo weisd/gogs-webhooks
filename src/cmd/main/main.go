@@ -38,7 +38,6 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(string(data))
 	var v GogsHookRequest
 
 	err = json.Unmarshal(data, &v)
@@ -81,7 +80,7 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 	}
 
 	fmt.Println(result)
-	fmt.Println("pull ok")
+	fmt.Printf("%s pull ok", key)
 
 	fmt.Fprintf(w, result)
 }
