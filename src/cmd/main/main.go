@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"flag"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -92,11 +93,15 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "hi-ddd")
 }
 
+var tomlPath string
+
 func main() {
 	defaultToml, _ := os.Getwd()
 	defaultToml = filepath.Join(defaultToml, "./src/cmd/main/app.toml")
 
-	if err := InitConfig(defaultToml); err != nil {
+	flag.StringVar(&tomlPath, "c", defaultToml, "-c /path/to/app.toml config gile")
+
+	if err := InitConfig(tomlPath); err != nil {
 		log.Fatal(err)
 	}
 
