@@ -38,20 +38,14 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 }
 
 func Hello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hi-d")
+	fmt.Fprintf(w, "hi-dd")
 }
 
 func main() {
 
 	mux := http.NewServeMux()
 	mux.HandleFunc("/hooks", Webhook)
-	mux.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
-		if req.URL.Path != "/" {
-			http.NotFound(w, req)
-			return
-		}
-		fmt.Fprintf(w, "Welcome to the home page!")
-	})
+	mux.HandleFunc("/", Hello)
 
 	log.Fatal(http.ListenAndServe(":8080", mux))
 }
