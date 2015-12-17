@@ -38,7 +38,7 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 }
 
 func Hello(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "hi-dd")
+	fmt.Fprintf(w, "hi-ddd")
 }
 
 func main() {
