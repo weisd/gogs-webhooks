@@ -24,6 +24,7 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	fmt.Println(string(data))
 	var v GogsHookRequest
 
 	err = json.Unmarshal(data, &v)
