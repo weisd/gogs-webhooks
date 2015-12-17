@@ -96,6 +96,7 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 var tomlPath string
 
 func main() {
+	flag.Parse()
 	defaultToml, _ := os.Getwd()
 	defaultToml = filepath.Join(defaultToml, "./src/cmd/main/app.toml")
 
