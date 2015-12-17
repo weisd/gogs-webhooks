@@ -47,5 +47,5 @@ func main() {
 		fmt.Fprintf(w, "Welcome to the home page!")
 	})
 
-	log.Fatal(http.ListenAndServe(":8088", mux))
+	log.Fatal(http.ListenAndServe(":8080", mux))
 }
