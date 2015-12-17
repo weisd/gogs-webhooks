@@ -28,7 +28,7 @@ type Repository struct {
 	Website     string `json:"website"`
 	Watchers    int64  `json:"watchers"`
 	Owner       Author `json:"owner"`
-	Private     string `json:"private"`
+	Private     bool   `json:"private"`
 }
 
 type Commit struct {
