@@ -95,12 +95,14 @@ func Hello(w http.ResponseWriter, r *http.Request) {
 
 var tomlPath string
 
-func main() {
-	flag.Parse()
+func init() {
 	defaultToml, _ := os.Getwd()
 	defaultToml = filepath.Join(defaultToml, "./src/cmd/main/app.toml")
-
 	flag.StringVar(&tomlPath, "c", defaultToml, "-c /path/to/app.toml config gile")
+}
+
+func main() {
+	flag.Parse()
 
 	if err := InitConfig(tomlPath); err != nil {
 		log.Fatal(err)
