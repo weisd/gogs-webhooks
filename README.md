@@ -43,3 +43,12 @@ secret = "Secret"
 srcPath = "/data/b"
 allowUser = ["weisd"]
 ```
+
+
+```
+➜  main git:(master)     GOPATH=/Users/dadadadada/Documents/GitHub/gogs-webhooks/vendor
+
+➜  main git:(master)     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o gogs_web_hook main.go struct.go config.go
+
+
+```
