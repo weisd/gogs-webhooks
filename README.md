@@ -19,12 +19,15 @@ http://localhost:port/hooks?k=<名称>
 
 ```
 listen = ":8081"
+<!--  这是仓库的名字-->
 [Reps.test]
+<!--  这是自己随便定义的名字-->
 name = "test"
 ref="refs/heads/master"
 secret = "Secret"
 srcPath = "/data/test"
-allowUser = ["weisd"]
+<!--  可以多个用户-->
+allowUser = ["weisd","fuck"]
 
 [Reps.a]
 name = "a"
