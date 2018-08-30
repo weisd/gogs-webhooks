@@ -1,0 +1,7 @@
+listen = ":9999"
+[Reps.reps___xxxxxx_php]
+name = "name"
+ref="refs/heads/master"
+secret = "asldkjasjdlakjsldkajlskdjad="
+srcPath = "/Users/xxx/Desktop/Project"
+allowUser = ["admin","xxxx","xxx"]

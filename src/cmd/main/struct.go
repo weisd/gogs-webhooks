@@ -1,7 +1,6 @@
 package main
 
 type GogsHookRequest struct {
-	Secret      string     `json:"secret"`
 	Ref         string     `json:"ref"`
 	Before      string     `json:"before"`
 	After       string     `json:"after"`

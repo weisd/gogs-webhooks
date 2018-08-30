@@ -10,6 +10,9 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"crypto/hmac"
+	"crypto/sha256"
+	"io"
 )
 
 func Webhook(w http.ResponseWriter, r *http.Request) {
@@ -31,7 +34,7 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Println(Rep)
+	//log.Println(Rep)
 
 	data, err := ioutil.ReadAll(r.Body)
 	if err != nil {
@@ -45,16 +48,18 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(v)
+	//fmt.Println(v)
 
-	pushUser := v.Pusher.Name
+	pushUser := v.Pusher.Username
 	pushRef := v.Ref
-	pushSecret := v.Secret
+	pushSecret := r.Header.Get("X-Gogs-Signature")
 
-	if pushSecret != Rep.Secret {
+	//https://gogs.io/docs/features/webhook.html
+	if pushSecret != getHmacCode(string(data), Rep.Secret) {
 		err = fmt.Errorf("secret auth failed")
 		return
 	}
+
 
 	if pushRef != Rep.Ref {
 		err = fmt.Errorf("Ref auth failed")
@@ -63,7 +68,11 @@ func Webhook(w http.ResponseWriter, r *http.Request) {
 
 	authUserOk := false
 
+	println(pushUser)
+
+
 	for _, u := range Rep.AllowUser {
+
 		if pushUser == u {
 			authUserOk = true
 		}
@@ -101,6 +110,13 @@ func init() {
 	defaultToml, _ := os.Getwd()
 	defaultToml = filepath.Join(defaultToml, "./src/cmd/main/app.toml")
 	flag.StringVar(&tomlPath, "c", defaultToml, "-c /path/to/app.toml config gile")
+}
+
+//密钥文本将被用于计算推送内容的 SHA256 HMAC 哈希值，并设置为 X-Gogs-Signature 请求头的值。
+func getHmacCode(s string, key string) string {
+	h := hmac.New(sha256.New, []byte(key))
+	io.WriteString(h, s)
+	return fmt.Sprintf("%x", h.Sum(nil))
 }
 
 func main() {
